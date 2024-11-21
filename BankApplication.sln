@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Common.EntityModels.Sqlite", "Banking.Common.EntityModels.Sqlite\Banking.Common.EntityModels.Sqlite.csproj", "{FCAFA371-3C96-40A8-82FD-AB2D9558A265}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Common.DataContext.Sqlite", "Banking.Common.DataContext.Sqlite\Banking.Common.DataContext.Sqlite.csproj", "{6E6A1934-7346-45E8-9D18-73012EBBB087}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCAFA371-3C96-40A8-82FD-AB2D9558A265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAFA371-3C96-40A8-82FD-AB2D9558A265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAFA371-3C96-40A8-82FD-AB2D9558A265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAFA371-3C96-40A8-82FD-AB2D9558A265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

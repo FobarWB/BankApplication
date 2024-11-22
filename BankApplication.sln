@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Common.EntityModels
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Common.DataContext.Sqlite", "Banking.Common.DataContext.Sqlite\Banking.Common.DataContext.Sqlite.csproj", "{6E6A1934-7346-45E8-9D18-73012EBBB087}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.AccountApi", "Banking.AccountApi\Banking.AccountApi.csproj", "{976111A8-869D-4BE4-BA79-7FDE3D50EA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.TransactionApi", "Banking.TransactionApi\Banking.TransactionApi.csproj", "{3D9FADF3-665B-4936-AF6C-F70C26779802}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E6A1934-7346-45E8-9D18-73012EBBB087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{976111A8-869D-4BE4-BA79-7FDE3D50EA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976111A8-869D-4BE4-BA79-7FDE3D50EA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976111A8-869D-4BE4-BA79-7FDE3D50EA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976111A8-869D-4BE4-BA79-7FDE3D50EA87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

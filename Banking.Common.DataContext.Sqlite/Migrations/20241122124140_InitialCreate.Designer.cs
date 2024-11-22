@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banking.Common.DataContext.Sqlite.Migrations
 {
     [DbContext(typeof(BankingContext))]
-    [Migration("20241121140830_InitialCreate")]
+    [Migration("20241122124140_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

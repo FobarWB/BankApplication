@@ -7,11 +7,13 @@ This repository contains a C# project implementing a Banking Solution using **AS
 ## Features
 
 ### Account Management
+
 - Create a new account with an initial balance.
 - Retrieve account details by account number.
 - List all accounts.
 
 ### Transactions
+
 - Deposit funds into an account.
 - Withdraw funds from an account.
 - Transfer funds between two accounts.
@@ -19,6 +21,7 @@ This repository contains a C# project implementing a Banking Solution using **AS
 ---
 
 ## Technologies Used
+
 - **ASP.NET Core** for API development.
 - **Entity Framework Core** for database interaction.
 - **SQLite** for local database storage.
@@ -29,13 +32,21 @@ This repository contains a C# project implementing a Banking Solution using **AS
 ## How to Run the Project
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/FobarWB/BankApplication
    cd BankApplication
 
+   ```
+
 2. **Run the application:**
+
    ```bash
-   dotnet run
+   dotnet run -p Banking.AccountApi
+   ```
+
+   ```bash
+   dotnet run -p Banking.TransactionApi
    ```
 
 3. **Access the API:**
@@ -47,6 +58,7 @@ This repository contains a C# project implementing a Banking Solution using **AS
 ## Testing
 
 1. **Run unit tests:**
+
    ```bash
    dotnet test
    ```
@@ -62,9 +74,11 @@ This repository contains a C# project implementing a Banking Solution using **AS
 ## Example API Endpoints
 
 ### Account Management
+
 1. **Create Account**  
    `POST /api/accounts`  
    Body:
+
    ```json
    {
      "name": "John Doe",
@@ -79,9 +93,11 @@ This repository contains a C# project implementing a Banking Solution using **AS
    `GET /api/accounts`
 
 ### Transactions
+
 1. **Deposit Funds**  
    `POST /api/transactions/deposit`  
    Body:
+
    ```json
    {
      "accountNumber": 1,
@@ -92,6 +108,7 @@ This repository contains a C# project implementing a Banking Solution using **AS
 2. **Withdraw Funds**  
    `POST /api/transactions/withdraw`  
    Body:
+
    ```json
    {
      "accountNumber": 1,

@@ -1,5 +1,5 @@
-using Banking.TransactionAPI.Repositories;
 using Banking.Shared;
+using Banking.TransactionAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new()
-    { Title = "Banking Product API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "Banking Transaction API", Version = "v1" });
 });
 
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();

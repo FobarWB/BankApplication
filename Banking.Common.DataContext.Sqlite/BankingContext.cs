@@ -5,18 +5,14 @@ namespace Banking.Shared
 {
     public class BankingContext : DbContext
     {
-        public BankingContext()
-        {
-        }
+        public BankingContext() { }
 
-        public BankingContext(DbContextOptions<BankingContext> options) 
-            : base(options)  
-        {
-        }
+        public BankingContext(DbContextOptions<BankingContext> options)
+            : base(options) { }
 
-        public DbSet<Account> Accounts { get; set; } = null!;
-        public DbSet<Transaction> Transactions { get; set; } = null!;
-    
+        public virtual DbSet<Account> Accounts { get; set; } = null!;
+        public virtual DbSet<Transaction> Transactions { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -39,25 +35,23 @@ namespace Banking.Shared
             {
                 entity.HasKey(t => t.TransactionId);
 
-                entity.HasOne(t => t.FromAccount)
-                      .WithMany()
-                      .HasForeignKey(t => t.FromAccountNumber)
-                      .OnDelete(DeleteBehavior.Restrict);
+                entity
+                    .HasOne(t => t.FromAccount)
+                    .WithMany()
+                    .HasForeignKey(t => t.FromAccountNumber)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(t => t.ToAccount)
-                      .WithMany()
-                      .HasForeignKey(t => t.ToAccountNumber)
-                      .OnDelete(DeleteBehavior.Restrict);
+                entity
+                    .HasOne(t => t.ToAccount)
+                    .WithMany()
+                    .HasForeignKey(t => t.ToAccountNumber)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-                entity.Property(t => t.Type)
-                      .IsRequired();
+                entity.Property(t => t.Type).IsRequired();
 
-                entity.Property(t => t.Amount)
-                      .IsRequired()
-                      .HasColumnType("decimal(18, 2)");
+                entity.Property(t => t.Amount).IsRequired().HasColumnType("decimal(18, 2)");
 
-                entity.Property(t => t.Date)
-                      .IsRequired();
+                entity.Property(t => t.Date).IsRequired();
             });
         }
     }

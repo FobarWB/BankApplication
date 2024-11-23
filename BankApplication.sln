@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.AccountApi", "Banki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.TransactionApi", "Banking.TransactionApi\Banking.TransactionApi.csproj", "{3D9FADF3-665B-4936-AF6C-F70C26779802}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.XUnitTests", "Banking.XUnitTests\Banking.XUnitTests.csproj", "{049D91DC-FA8B-452B-9A07-A423AC8FF098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D9FADF3-665B-4936-AF6C-F70C26779802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049D91DC-FA8B-452B-9A07-A423AC8FF098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049D91DC-FA8B-452B-9A07-A423AC8FF098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049D91DC-FA8B-452B-9A07-A423AC8FF098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049D91DC-FA8B-452B-9A07-A423AC8FF098}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

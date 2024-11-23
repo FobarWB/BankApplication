@@ -6,7 +6,7 @@ namespace Banking.TransactionAPI.Repositories
     public class TransactionRepository : ITransactionRepository
     {
         private readonly BankingContext db;
-        
+
         public TransactionRepository(BankingContext db)
         {
             this.db = db;
@@ -14,7 +14,9 @@ namespace Banking.TransactionAPI.Repositories
 
         public async Task<Transaction?> DepositAsync(Transaction transaction)
         {
-            Account? account = await db.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == transaction.ToAccountNumber);
+            Account? account = await db.Accounts.FirstOrDefaultAsync(a =>
+                a.AccountNumber == transaction.ToAccountNumber
+            );
             if (account is null)
             {
                 return null;
@@ -28,12 +30,14 @@ namespace Banking.TransactionAPI.Repositories
 
         public async Task<Transaction?> WithdrawAsync(Transaction transaction)
         {
-            Account? account = await db.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == transaction.FromAccountNumber);
+            Account? account = await db.Accounts.FirstOrDefaultAsync(a =>
+                a.AccountNumber == transaction.FromAccountNumber
+            );
             if (account is null)
             {
                 return null;
             }
-            if (account.Balance - transaction.Amount < 0)
+            if (transaction.Amount > account.Balance)
             {
                 return null;
             }
@@ -46,17 +50,21 @@ namespace Banking.TransactionAPI.Repositories
 
         public async Task<Transaction?> TransferAsync(Transaction transaction)
         {
-            Account? accountFrom = await db.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == transaction.FromAccountNumber);
+            Account? accountFrom = await db.Accounts.FirstOrDefaultAsync(a =>
+                a.AccountNumber == transaction.FromAccountNumber
+            );
             if (accountFrom is null)
             {
                 return null;
             }
-            Account? accountTo = await db.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == transaction.ToAccountNumber);
+            Account? accountTo = await db.Accounts.FirstOrDefaultAsync(a =>
+                a.AccountNumber == transaction.ToAccountNumber
+            );
             if (accountTo is null)
             {
                 return null;
             }
-            if (accountFrom.Balance - transaction.Amount < 0)
+            if (transaction.Amount > accountFrom.Balance)
             {
                 return null;
             }
@@ -70,8 +78,7 @@ namespace Banking.TransactionAPI.Repositories
 
         public async Task<Transaction?> GetTransactionAsync(int transactionId)
         {
-            return await db.Transactions
-                .FirstOrDefaultAsync(t => t.TransactionId == transactionId);
+            return await db.Transactions.FirstOrDefaultAsync(t => t.TransactionId == transactionId);
         }
     }
 }

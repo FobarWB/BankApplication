@@ -7,11 +7,23 @@ namespace Banking.TransactionAPI.Repositories
     {
         private readonly BankingContext db;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionRepository"/> class.
+        /// </summary>
+        /// <param name="db">The database context for managing transactions and accounts.</param>
         public TransactionRepository(BankingContext db)
         {
             this.db = db;
         }
 
+        /// <summary>
+        /// Processes a deposit transaction by adding the specified amount to the target account.
+        /// </summary>
+        /// <param name="transaction">The transaction details, including the target account and amount.</param>
+        /// <returns>
+        /// The completed <see cref="Transaction"/> object if successful;
+        /// otherwise, <c>null</c> if the account does not exist.
+        /// </returns>
         public async Task<Transaction?> DepositAsync(Transaction transaction)
         {
             Account? account = await db.Accounts.FirstOrDefaultAsync(a =>
@@ -28,6 +40,14 @@ namespace Banking.TransactionAPI.Repositories
             return transaction;
         }
 
+        /// <summary>
+        /// Processes a withdrawal transaction by deducting the specified amount from the source account.
+        /// </summary>
+        /// <param name="transaction">The transaction details, including the source account and amount.</param>
+        /// <returns>
+        /// The completed <see cref="Transaction"/> object if successful;
+        /// otherwise, <c>null</c> if the account does not exist or the balance is insufficient.
+        /// </returns>
         public async Task<Transaction?> WithdrawAsync(Transaction transaction)
         {
             Account? account = await db.Accounts.FirstOrDefaultAsync(a =>
@@ -48,6 +68,14 @@ namespace Banking.TransactionAPI.Repositories
             return transaction;
         }
 
+        /// <summary>
+        /// Processes a transfer transaction between two accounts.
+        /// </summary>
+        /// <param name="transaction">The transaction details, including source, target accounts, and amount.</param>
+        /// <returns>
+        /// The completed <see cref="Transaction"/> object if successful;
+        /// otherwise, <c>null</c> if any account does not exist or the source account has insufficient balance.
+        /// </returns>
         public async Task<Transaction?> TransferAsync(Transaction transaction)
         {
             Account? accountFrom = await db.Accounts.FirstOrDefaultAsync(a =>
@@ -76,6 +104,13 @@ namespace Banking.TransactionAPI.Repositories
             return transaction;
         }
 
+        /// <summary>
+        /// Retrieves a transaction by its unique identifier.
+        /// </summary>
+        /// <param name="transactionId">The unique identifier of the transaction.</param>
+        /// <returns>
+        /// The <see cref="Transaction"/> object if found; otherwise, <c>null</c>.
+        /// </returns>
         public async Task<Transaction?> GetTransactionAsync(int transactionId)
         {
             return await db.Transactions.FirstOrDefaultAsync(t => t.TransactionId == transactionId);

@@ -1,23 +1,32 @@
-using Banking.Shared;
-using Banking.AccountApi.Repositories;
-using Microsoft.AspNetCore.Mvc;
 using Banking.AccountApi.DTOs;
+using Banking.AccountApi.Repositories;
+using Banking.Shared;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Banking.AccountApi.Controllers
 {
     [ApiController]
     [Route("api/accounts")]
-    public class AccountAPIController: ControllerBase
+    public class AccountAPIController : ControllerBase
     {
         private readonly IAccountRepository repository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountAPIController"/> class.
+        /// </summary>
+        /// <param name="repository">The repository for managing account data.</param>
         public AccountAPIController(IAccountRepository repository)
         {
             this.repository = repository;
         }
 
-        // GET: api/accounts
-        // this will always return a list of accounts (but it might be empty)
+        /// <summary>
+        /// Retrieves all accounts from the system.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IEnumerable{Account}"/> containing all accounts.
+        /// Returns an empty collection if no accounts exist.
+        /// </returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Account>))]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
@@ -26,8 +35,13 @@ namespace Banking.AccountApi.Controllers
             return Ok(accounts);
         }
 
-        // GET: api/accounts/[accountNumber]
-        // this can return account if number found or empty otherwise
+        /// <summary>
+        /// Retrieves a specific account by its account number.
+        /// </summary>
+        /// <param name="accountNumber">The account number to look up.</param>
+        /// <returns>
+        /// An <see cref="Account"/> object if found; otherwise, a 404 Not Found response.
+        /// </returns>
         [HttpGet("{accountNumber}", Name = nameof(GetAccount))]
         [ProducesResponseType(200, Type = typeof(Account))]
         [ProducesResponseType(404)]
@@ -41,8 +55,16 @@ namespace Banking.AccountApi.Controllers
             return Ok(account);
         }
 
-        //POST: api/accounts
-        //BODY: Account (JSON, XML)
+        /// <summary>
+        /// Creates a new account in the system.
+        /// </summary>
+        /// <param name="accountDTO">
+        /// A <see cref="AccountDTO"/> object containing the account details to create.
+        /// </param>
+        /// <returns>
+        /// A 201 Created response with the created <see cref="Account"/> if successful.
+        /// Returns a 400 Bad Request response for invalid input.
+        /// </returns>
         [HttpPost]
         [ProducesResponseType(201, Type = typeof(Account))]
         [ProducesResponseType(400)]
@@ -56,11 +78,7 @@ namespace Banking.AccountApi.Controllers
             {
                 return BadRequest("Initial balance is less than 0");
             }
-            Account account = new()
-            {
-                Name = accountDTO.Name,
-                Balance = accountDTO.initialBalance,
-            };
+            Account account = new() { Name = accountDTO.Name, Balance = accountDTO.initialBalance };
 
             Account? addedAccount = await repository.CreateAccountAsync(account);
             if (addedAccount is null)
